@@ -52,7 +52,26 @@ const questions = [
 ]
 
 // creating functions
-function startQuiz(){}
-function showQuestion(){}
+let currentQuestionIndex = 0;
+function startQuiz(){
+    currentQuestionIndex = 0;
+    showQuestion();
+    nextButton.style.display = "none";
+}
+function showQuestion(){
+    const question = questions[currentQuestionIndex];
+    questionContainer.innerHTML = question.question;
+    optionContainer.innerHTML = "";
+    question.answer.forEach(answer => {
+        const button = document.createElement("button");
+        button.classList.add("btn");
+        button.innerText = answer.option;
+        button.addEventListener("click", () => selectAnswer(answer));
+        optionContainer.appendChild(button);
+    })
+
+    nextButton.style.display = "none";
+    
+}
 function selectAnswer(){}
 function nextQuestion(){}
