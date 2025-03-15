@@ -66,12 +66,26 @@ function showQuestion(){
         const button = document.createElement("button");
         button.classList.add("btn");
         button.innerText = answer.option;
-        button.addEventListener("click", () => selectAnswer(answer));
+        button.addEventListener("click", () => selectAnswer(answer, button));
         optionContainer.appendChild(button);
     })
 
     nextButton.style.display = "none";
     
 }
-function selectAnswer(){}
+function selectAnswer(answer, button ){
+    if(answer.correct){
+        button.style.backgroundColor = "green";       
+}
+    else{
+        button.style.backgroundColor = "red";
+    }
+    nextButton.style.display = "block";
+
+    const buttons = document.querySelectorAll(".btn");
+
+    buttons.forEach(button => {
+        button.disabled = true;
+    })
+}
 function nextQuestion(){}
